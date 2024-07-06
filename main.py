@@ -5,6 +5,29 @@ from io import BytesIO
 import random
 import os
 import pygame
+import ctypes
+
+def ukryj_folder(sciezka):
+    try:
+        # Upewnij się, że sciezka jest bezwzględna
+        sciezka = os.path.abspath(sciezka)
+        
+        # Ustaw atrybut ukryty dla folderu
+        ctypes.windll.kernel32.SetFileAttributesW(sciezka, 0x02)
+        
+        print(f'Ukryto folder "{sciezka}"')
+    except Exception as e:
+        print(f'Błąd podczas ukrywania folderu: {e}')
+
+if __name__ == "__main__":
+    # Pobierz ścieżkę do bieżącego skryptu
+    sciezka_skryptu = os.path.dirname(os.path.realpath(__file__))
+    
+    # Ukryj folder, w którym znajduje się skrypt
+    ukryj_folder(sciezka_skryptu)
+
+
+
 
 pygame.init()
 
