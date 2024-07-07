@@ -14,7 +14,7 @@
 
 We are testing every version before release. If you got an error or found a bug:
 
-Dm @ajemjormelodi or @samarama._ on Discord
+Dm [@ajemjormelodi](https://discord.com/users/710110211809214504) or [@samarama._](https://discord.com/users/748077813763932170) on Discord
 
 
 ## Discord server
