@@ -3,3 +3,4 @@ requests
 pillow
 ctype
 pywin32
+plyer
