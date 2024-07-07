@@ -14,6 +14,7 @@ You just need to unzip folder and launch .exe file by double-clicking it. You ne
 ## Support
 
 Dm @ajemjormelodi or @samarama._ on Discord
+
 Maybe we will make discord server soon
 
 Check support.md file for more info 
