@@ -13,7 +13,7 @@ You just need to unzip folder and launch .exe file by double-clicking it. You ne
 
 ## Support
 
-Dm [@ajemjormelodi](https://discord.com/users/710110211809214504) or [@samarama](https://discord.com/users/748077813763932170) on Discord
+Dm [@ajemjormelodi](https://discord.com/users/710110211809214504) or [@samarama._](https://discord.com/users/748077813763932170) on Discord
 
 Maybe we will make discord server soon
 
