@@ -9,7 +9,17 @@ NyaWare opens anime pictures in random moment and in random position on screen. 
 
 ## How to use virus
 
+
+### Releases
+
 You just need to unzip folder and launch .exe file by double-clicking it. You need to click yes on administrator prompt.
+
+### Code > Download .zip
+
+First, you need to install Python. Then, you need to install all required packages from requirements.txt. Finally, go to NyaWare directory and run NyaWare  (```python main.py```)
+
+### We recommend using Releases version compiled to .exe file
+
 
 ## Support
 
