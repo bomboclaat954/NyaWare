@@ -1,3 +1,5 @@
 pygame 
 requests
 pillow
+ctype
+win32file
