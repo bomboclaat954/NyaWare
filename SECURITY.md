@@ -7,8 +7,8 @@
 | ------- | ------------------ |
 | 0.3.5   | :white_check_mark: |
 | 0.2.0   | :x:                |
-| 1.0.0   | :white_check_mark: |
-| --------|--------------------|
+| 1.0.0   | Not published yet  |
+
 
 ## Errors / Bugs
 
