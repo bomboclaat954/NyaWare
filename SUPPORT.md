@@ -5,8 +5,9 @@
 
 | Version | Supported          |
 | ------- | ------------------ |
-| 0.3.5   | :white_check_mark: |
-| 0.2.0   | :x:                |
+| 0.2.0   | ✅                 |
+| 0.3.5   | ✅                 |
+| 0.4.5   | ✅                 |
 | 1.0.0   | Not published yet  |
 
 
