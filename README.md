@@ -13,8 +13,8 @@ You just need to unzip folder and launch .exe file by double-clicking it. You ne
 
 ## Support
 
-Dm @ajemjormelodi or @samarama._ on Discord
+Dm [@ajemjormelodi](https://discord.com/users/710110211809214504) or [@samarama](https://discord.com/users/748077813763932170) on Discord
 
 Maybe we will make discord server soon
 
-Check support.md file for more info 
+Check [Support](https://github.com/samarama091/NyaWare/blob/main/SUPPORT.md) for more info.
